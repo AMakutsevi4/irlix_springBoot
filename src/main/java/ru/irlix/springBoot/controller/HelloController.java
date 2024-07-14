@@ -1,4 +1,4 @@
-package ru.irlix.springBoot.mvc_first;
+package ru.irlix.springBoot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

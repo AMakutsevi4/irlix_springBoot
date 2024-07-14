@@ -1,4 +1,4 @@
-package ru.irlix.springBoot.mvc_demo;
+package ru.irlix.springBoot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
