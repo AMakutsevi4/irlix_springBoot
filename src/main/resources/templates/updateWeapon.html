@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование оружия</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование оружия</h1>
+    <form th:action="@{/update/{id}(id=${weapon.id})}" th:object="${weapon}" method="post">
+        <div class="form-group">
+            <label for="name" class="form-label"><b>Название</b></label>
+            <input type="text" class="form-control" th:field="*{name}" id="name">
+        </div>
+        <div class="form-group">
+            <label for="type" class="form-label"><b>Тип оружия</b></label>
+            <input type="text" class="form-control" th:field="*{type}" id="type">
+        </div>
+        <div class="form-group">
+            <label for="sizeMagazine" class="form-label"><b>Размер магазина</b></label>
+            <input type="text" class="form-control" th:field="*{sizeMagazine}" id="sizeMagazine">
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
