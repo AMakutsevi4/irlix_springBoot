@@ -8,7 +8,6 @@ public class MvcDemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MvcDemoApplication.class, args);
-        System.out.println("Go to: http://localhost:8080/calculator");
+        System.out.println("Go to: http://localhost:8080/weapons");
     }
-
 }
