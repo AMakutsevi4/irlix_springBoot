@@ -39,4 +39,20 @@ public class WeaponController {
         return "redirect:/weapons";
     }
 
+    @GetMapping("/update/{id}")
+    public String showEditForm(@PathVariable int id, Model model) {
+        Weapon weapon = weaponRepo.findById(id);
+        if (weapon != null) {
+            model.addAttribute("weapon", weapon);
+            return "updateWeapon";
+        }
+        return "redirect:/weapons";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateWeapon(@PathVariable int id, @ModelAttribute Weapon weapon) {
+        weaponRepo.update(id, weapon);
+        return "redirect:/weapons";
+    }
+
 }

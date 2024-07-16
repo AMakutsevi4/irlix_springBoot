@@ -32,6 +32,7 @@
                 <th scope="col">Название</th>
                 <th scope="col">Тип</th>
                 <th scope="col">Размер магазина</th>
+                <th scope="col">Действие</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +41,9 @@
                 <td th:text="${weapon.name}" />
                 <td th:text="${weapon.type}" />
                 <td th:text="${weapon.sizeMagazine}" />
+                <td>
+                    <a th:href="@{/update/{id}(id=${weapon.id})}" class="btn btn-warning">Редактировать</a>
+                </td>
             </tr>
             </tbody>
         </table>
