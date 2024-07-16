@@ -26,5 +26,17 @@ public class WeaponRepository {
     public void deleteById(String name) {
         weaponList.removeIf(w -> w.getName().equals(name));
     }
+
+    public Weapon findById(int id) {
+        return weaponList.stream().filter(w -> w.getId() == id).findFirst().orElse(null);
+    }
+
+    public void update(int id, Weapon weapon) {
+        Weapon update = findById(id);
+        update.setName(weapon.getName());
+        update.setType(weapon.getType());
+        update.setSizeMagazine(weapon.getSizeMagazine());
+
+    }
 }
 
