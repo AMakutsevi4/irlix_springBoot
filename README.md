@@ -13,7 +13,7 @@
 
 Проект содержит реализацию калькулятора, который сохраняет историю результатов вычисления.
 
-![](src/main/resources/images/calculator.png)
+![](src/main/resources/static/images/calculator.png)
 
 
 Описание будет пополняться по мере изучения новых тем.
