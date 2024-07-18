@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить работника</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Сотрудники компании</a>
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/managersAndEmployees">Главная</a>
+                    <a class="nav-item nav-link" th:href="@{/managers/new}">Добавить менеджера</a>
+                    <a class="nav-item nav-link" th:href="@{/employees/new}">Добавить работника</a>
+                    <a class="nav-item nav-link" th:href="@{/managers}">Список менеджеров</a>
+                    <a class="nav-item nav-link" th:href="@{/employees}">Список работников</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<body>
+<div class="container">
+    <h4>Оформление карточки нового работника</h4>
+    <form action="/employees" method="post">
+        <input type="hidden" name="id" th:value="${employee.id}"/>
+        <div class="form-group">
+            <label for="firstName">Имя:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${employee.firstName}">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Фамилия:</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" th:value="${employee.lastName}">
+        </div>
+        <div class="form-group">
+            <label for="age">Возраст:</label>
+            <input type="number" class="form-control" id="age" name="age" th:value="${employee.age}">
+        </div>
+        <div class="form-group">
+            <label for="experience">Опыт работы (в годах):</label>
+            <input type="number" class="form-control" id="experience" name="experience" th:value="${employee.experience}">
+        </div>
+        <div class="form-group">
+            <label for="specialization">Специализация:</label>
+            <input type="text" class="form-control" id="specialization" name="specialization" th:value="${employee.specialization}">
+        </div>
+        <div class="form-group">
+            <label for="manager">Менеджер:</label>
+            <select class="form-control" id="manager" name="manager.id">
+                <option th:each="manager : ${managers}" th:value="${manager.id}" th:text="${manager.firstName + ' ' + manager.lastName}"
+                        th:selected="${manager.id} == ${employee.manager?.id}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

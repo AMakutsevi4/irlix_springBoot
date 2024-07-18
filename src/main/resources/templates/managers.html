@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Менеджеры</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Сотрудники компании</a>
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/managersAndEmployees">Главная</a>
+                    <a class="nav-item nav-link" th:href="@{/managers/new}">Добавить менеджера</a>
+                    <a class="nav-item nav-link" th:href="@{/employees/new}">Добавить работника</a>
+                    <a class="nav-item nav-link" th:href="@{/managers}">Список менеджеров</a>
+                    <a class="nav-item nav-link" th:href="@{/employees}">Список работников</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<body>
+<div class="container">
+    <h4>Полный список менеджеров</h4>
+<!--    <a href="/managers/new" class="btn btn-primary">Добавить менеджера</a>-->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Опыт работы</th>
+            <th>Работники</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="manager : ${managers}">
+            <td th:text="${manager.id}"></td>
+            <td th:text="${manager.firstName}"></td>
+            <td th:text="${manager.lastName}"></td>
+            <td th:text="${manager.age}"></td>
+            <td th:text="${manager.experience}"></td>
+            <td>
+                <ul>
+                    <li th:each="employee : ${manager.employees}" th:text="${employee.firstName + ' ' + employee.lastName}"></li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{'/managers/edit/' + ${manager.id}}" class="btn btn-warning">Изменить</a>
+                <a th:href="@{'/managers/delete/' + ${manager.id}}" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
