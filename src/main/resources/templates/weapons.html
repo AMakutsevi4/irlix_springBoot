@@ -17,7 +17,7 @@
 <img th:src="@{/images/oneWeapon.png}" alt="Weapon Image" width="800">
 <p>Тут вы можете управлять своим каталогом оружия, а именно: добавлять, изменять и удалять позиции</p>
 <p>
-    <a href="/create">Добавить</a> новое оружие
+    <a href="weapons/save">Добавить</a> новое оружие
 </p>
 
 <h2>Весь список оружия:</h2>
@@ -42,7 +42,7 @@
                 <td th:text="${weapon.type}" />
                 <td th:text="${weapon.sizeMagazine}" />
                 <td>
-                    <a th:href="@{/update/{id}(id=${weapon.id})}" class="btn btn-warning">Редактировать</a>
+                    <a th:href="@{weapons/updates/{id}(id=${weapon.id})}" class="btn btn-warning">Редактировать</a>
                 </td>
             </tr>
             </tbody>
@@ -51,7 +51,7 @@
 </div>
 </body>
 
-    <form th:action="@{/delete}" method="post">
+    <form th:action="@{weapons/delete}" method="post">
         <label for="name">Введите название оружия для удаления:</label>
         <input type="text" id="name" name="name">
         <button type="submit" class="btn btn-danger">Удалить</button>

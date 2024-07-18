@@ -7,7 +7,7 @@
 <body>
 <div class="container">
     <h1>Редактирование оружия</h1>
-    <form th:action="@{/update/{id}(id=${weapon.id})}" th:object="${weapon}" method="post">
+    <form th:action="@{/weapons/updates/{id}(id=${weapon.id})}" th:object="${weapon}" method="post">
         <div class="form-group">
             <label for="name" class="form-label"><b>Название</b></label>
             <input type="text" class="form-control" th:field="*{name}" id="name">

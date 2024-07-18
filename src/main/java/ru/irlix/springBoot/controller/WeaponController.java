@@ -1,58 +1,55 @@
 package ru.irlix.springBoot.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.irlix.springBoot.model.Weapon;
-import ru.irlix.springBoot.repository.WeaponRepository;
+import ru.irlix.springBoot.service.WeaponService;
 
 @Controller
+@RequestMapping("/weapons")
+@RequiredArgsConstructor
 public class WeaponController {
 
-    private final WeaponRepository weaponRepo;
+    private final WeaponService weaponService;
 
-    public WeaponController(WeaponRepository weaponRepo) {
-        this.weaponRepo = weaponRepo;
-    }
 
-    @GetMapping("/weapons")
+    @GetMapping()
     public String showWeaponList(Model model) {
-        model.addAttribute("weaponList", weaponRepo.findAll());
+        model.addAttribute("weaponList", weaponService.findAll());
         return "weapons";
     }
 
-    @GetMapping("/create")
-    public String addPost(Model model) {
+    @GetMapping("/save")
+    public String save(Model model) {
         model.addAttribute("post", new Weapon());
         return "createWeapon";
     }
 
-    @PostMapping("/saveCreate")
-    public String create(@ModelAttribute Weapon weapon) {
-        weaponRepo.add(weapon);
+    @PostMapping("/save")
+    public String save(@ModelAttribute Weapon weapon) {
+        weaponService.add(weapon);
         return "redirect:/weapons";
     }
 
     @PostMapping("/delete")
-    public String deleteWeapon(@RequestParam("name") String name) {
-        weaponRepo.deleteById(name);
+    public String delete(@RequestParam("name") String name) {
+        weaponService.delete(name);
         return "redirect:/weapons";
     }
 
-    @GetMapping("/update/{id}")
-    public String showEditForm(@PathVariable int id, Model model) {
-        Weapon weapon = weaponRepo.findById(id);
-        if (weapon != null) {
+    @GetMapping("/updates/{weapon_id}")
+    public String updates(@PathVariable int weapon_id, Model model) {
+        Weapon weapon = weaponService.findById(weapon_id);
             model.addAttribute("weapon", weapon);
             return "updateWeapon";
-        }
-        return "redirect:/weapons";
+
     }
 
-    @PostMapping("/update/{id}")
-    public String updateWeapon(@PathVariable int id, @ModelAttribute Weapon weapon) {
-        weaponRepo.update(id, weapon);
+    @PostMapping("/updates/{weapon_id}")
+    public String updates(@PathVariable int weapon_id, @ModelAttribute Weapon weapon) {
+        weaponService.update(weapon_id, weapon);
         return "redirect:/weapons";
     }
-
 }
