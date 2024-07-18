@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <title>Каталог оружия</title>
+</head>
+<body>
+
+<h2>Добро пожаловать!</h2>
+</div>
+<h2>Вас приветствует портал для ведения журнала стрелкового оружия</h2>
+<img th:src="@{/images/oneWeapon.png}" alt="Weapon Image" width="800">
+<p>Тут вы можете управлять своим каталогом оружия, а именно: добавлять, изменять и удалять позиции</p>
+<p>
+    <a href="weapons/save">Добавить</a> новое оружие
+</p>
+
+<h2>Весь список оружия:</h2>
+<div class = "typesTwo">
+<body>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Размер магазина</th>
+                <th scope="col">Действие</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="weapon: ${weaponList}">
+                <td th:text="${weapon.id}" />
+                <td th:text="${weapon.name}" />
+                <td th:text="${weapon.type}" />
+                <td th:text="${weapon.sizeMagazine}" />
+                <td>
+                    <a th:href="@{weapons/updates/{id}(id=${weapon.id})}" class="btn btn-warning">Редактировать</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+    <form th:action="@{weapons/delete}" method="post">
+        <label for="name">Введите название оружия для удаления:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+
+<style>
+    .typesTwo {
+        color: black;
+        font-family: "Arial Rounded MT Bold";
+        background: #a3eaea;
+    }
+</style>
+</div>
+</body>
+<img th:src="@{/images/weaponsImage.png}" alt="Weapon Image" width="800">
+</html>
