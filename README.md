@@ -22,4 +22,11 @@
    ![](src/main/resources/static/images/viewWeaponStart.png)
    ![](src/main/resources/static/images/addNewWeapon.png)
 
-Описание будет пополняться по мере изучения новых тем.
+3) Портал для ведения журналов сотрудников и менеджеров, с возможностью привязки сотрудников к менеджерам и наоборот. 
+Также предусмотрена функциональность изменения и удаления данных о менеджерах и сотрудниках.
+
+![](src/main/resources/static/images/centralVievCompany.png)
+![](src/main/resources/static/images/addEmployee.png)
+![](src/main/resources/static/images/addManager.png)
+![](src/main/resources/static/images/employeeList.png)
+![](src/main/resources/static/images/managerList.png)
